@@ -53,7 +53,18 @@ public class UIPanelFadeIn : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         else
         {
-            //Next
+            // Load the next scene based on the build index
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+            // Check if the next scene index is within the valid range
+            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextSceneIndex);
+            }
+            else
+            {
+                Debug.LogWarning("No more scenes in build settings. Ensure you've added all required scenes.");
+            }
         }
     }
 
