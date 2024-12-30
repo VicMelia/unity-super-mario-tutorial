@@ -150,4 +150,6 @@ public class SquareManager : MonoBehaviour
         // Ensure the final size is set
         mainCamera.orthographicSize = endSize;
     }
+
+    
 }

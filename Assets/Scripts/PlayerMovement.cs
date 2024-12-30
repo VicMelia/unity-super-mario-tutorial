@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D capsuleCollider;
 
-    private Vector2 velocity;
-    private float inputAxis;
+    public Vector2 velocity;
+    public float inputAxis;
 
     public float moveSpeed = 8f;
     public float maxJumpHeight = 5f;
@@ -135,5 +135,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
 
 }

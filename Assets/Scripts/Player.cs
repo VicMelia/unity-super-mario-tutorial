@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public PlayerSpriteRenderer bigRenderer;
     private PlayerSpriteRenderer activeRenderer;
 
+    public UIPanelFadeIn UIPanelFadeIn;
+
     public bool big => bigRenderer.enabled;
     public bool dead => deathAnimation.enabled;
     public bool starpower { get; private set; }
@@ -42,6 +44,15 @@ public class Player : MonoBehaviour
         deathAnimation.enabled = true;
 
         GameManager.Instance.ResetLevel(3f);
+    }
+
+    public void Death2()
+    {
+        smallRenderer.enabled = false;
+        bigRenderer.enabled = false;
+        deathAnimation.enabled = true;
+
+        UIPanelFadeIn.StartCoroutine(UIPanelFadeIn.FadeIn(false));
     }
 
     public void Grow()

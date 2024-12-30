@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        lives = 3;
+        lives = 1000;
         coins = 0;
 
         LoadLevel(1, 1);

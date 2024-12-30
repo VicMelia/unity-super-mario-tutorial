@@ -16,6 +16,10 @@ public class NarratorManager : MonoBehaviour
     public GameObject cuadrados;
     public GameObject circulos;
 
+    public AudioClip cuentaAtras;
+    public AudioClip fraseFinal;
+    public UIPanelFadeIn UIPanelFadeIn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +58,19 @@ public class NarratorManager : MonoBehaviour
             StartCoroutine(sm.DespawnThings(sm.prueba2));
             circuloEspecial.enabled = false;
             StartCoroutine(sm.SpawnThings(sm.prueba3));
+            StartCoroutine(CountDownFinal());
         }
+    }
+
+    IEnumerator CountDownFinal()
+    {
+        audio.clip = cuentaAtras;
+        audio.Play();
+        yield return new WaitForSeconds(cuentaAtras.length);
+        audio.clip = fraseFinal;
+        audio.Play();
+        yield return new WaitForSeconds(fraseFinal.length);
+        UIPanelFadeIn.StartCoroutine(UIPanelFadeIn.FadeIn(true));
     }
 
     
