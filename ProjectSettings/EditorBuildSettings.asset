@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1-1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MickeyMinigame.unity
+    guid: 441f923f385a70540b9cba8533b691a5
+  - enabled: 1
+    path: Assets/Scenes/RouletteMinigame.unity
+    guid: ef25a3283f05d7d4f807763383fc614b
+  - enabled: 1
+    path: Assets/Scenes/PoliceMinigame.unity
+    guid: c9d592227cd877f4bacbe0fd09a71948
+  - enabled: 1
+    path: Assets/Scenes/PruebaRara.unity
+    guid: 0fff702289516e44fa5820b64b0ff109
+  - enabled: 1
+    path: Assets/Scenes/FinalLevel.unity
+    guid: 5e572b0b8dfe7f741a1dd66cb4c5a468
   m_configObjects: {}

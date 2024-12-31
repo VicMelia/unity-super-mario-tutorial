@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class BlockCoin : MonoBehaviour
 {
+    public SFXManager manager;
+
     private void Start()
     {
         GameManager.Instance.AddCoin();
+        manager = GameObject.Find("SFX").GetComponent<SFXManager>();
 
         StartCoroutine(Animate());
     }
@@ -17,6 +20,7 @@ public class BlockCoin : MonoBehaviour
 
         yield return Move(restingPosition, animatedPosition);
         yield return Move(animatedPosition, restingPosition);
+        manager.SetAudio(manager.coin);
 
         Destroy(gameObject);
     }

@@ -151,9 +151,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7ad73bfc86b80824aa003c8c3a404c6b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.012
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 307254549}
   - component: {fileID: 307254548}
+  - component: {fileID: 307254550}
   m_Layer: 0
   m_Name: PoliceAudios
   m_TagString: Untagged
@@ -277,10 +278,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 64b17badf8bd01b4eaedd6640caeccac, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
-  m_Pitch: 1
+  m_Volume: 0.5
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -378,6 +379,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307254550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307254547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e93966c6eab6a14caf45e5b221234bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 307254548}
+  poli1: {fileID: 8300000, guid: 511e465dcf3d9b445994917b5be49220, type: 3}
+  poli2: {fileID: 8300000, guid: 511e465dcf3d9b445994917b5be49220, type: 3}
 --- !u!1 &358729619
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4873742512294430418, guid: d6469d54bbd0aae49b1225eee439ba67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4873742512294430418, guid: d6469d54bbd0aae49b1225eee439ba67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1035,7 +1051,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1868920999, guid: fbc6ed11b6d8bbe4b8d8dcd16cc14ca8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1078,12 +1094,15 @@ MonoBehaviour:
   enderPearl: {fileID: 8591997506191506285, guid: 45badac4be7bb8b4ea8893b5ed3f7982, type: 3}
   hasPearl: 0
   enderAudio: {fileID: 1563258076}
-  enderClip: {fileID: 0}
+  enderClip:
+  - {fileID: 8300000, guid: 2e6164b08b5e5a845bffe08b89f4224c, type: 3}
+  - {fileID: 8300000, guid: cf9856df49d9530439516ae3136ae42b, type: 3}
   crashClip: {fileID: 8300000, guid: 09379ad9cb961384db1b251a98e939e6, type: 3}
   fadePanel: {fileID: 1510294209}
   fadeInPanel: {fileID: 1510294208}
   music: {fileID: 28976328}
   dead: 0
+  win: 0
 --- !u!61 &1563258074
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1143,7 +1162,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1277,7 +1296,7 @@ MonoBehaviour:
   - {fileID: 2103309903}
   - {fileID: 451441261}
   carPlayer: {fileID: 1563258073}
-  countdownTimer: 90
+  countdownTimer: 70
   timerText: {fileID: 516879538}
   fadeIn: {fileID: 1510294208}
   currentState: 0
@@ -1341,7 +1360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781775673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 5.2, z: 0}
+  m_LocalPosition: {x: 0.27, y: 5.2, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1499,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8192372162376532184, guid: 2cf8c66107055354badcb528021d6a4c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8192372162376532184, guid: 2cf8c66107055354badcb528021d6a4c, type: 3}
       propertyPath: m_LocalRotation.w

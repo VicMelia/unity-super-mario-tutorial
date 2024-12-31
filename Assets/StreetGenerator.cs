@@ -38,6 +38,11 @@ public class StreetGenerator : MonoBehaviour
             countdownTimer -= Time.deltaTime;
             if (countdownTimer <= 0f)
             {
+                carPlayer.win = true;
+                if (streetList.Count < 2)
+                {
+                    GenerateStreet();
+                }
                 countdownTimer = 0f; // Clamp the timer to 0
                 currentState = State.Ending;
                 EndGame();

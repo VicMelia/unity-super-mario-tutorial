@@ -20,9 +20,12 @@ public class NarratorManager : MonoBehaviour
     public AudioClip fraseFinal;
     public UIPanelFadeIn UIPanelFadeIn;
 
+    public bool prueba1Started;
+
     // Start is called before the first frame update
     void Start()
     {
+
         StartCoroutine(PlaySequence(actualClip));
     }
 

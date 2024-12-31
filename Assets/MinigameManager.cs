@@ -24,6 +24,8 @@ public class MinigameManager : MonoBehaviour
     public AudioClip final1;  // Audio clip for restart
     public AudioClip final2;  // Audio clip for restart
 
+    public AudioSource instrumentalFondo;
+
     // Start the game when this method is called
     public void StartGame()
     {
@@ -36,14 +38,16 @@ public class MinigameManager : MonoBehaviour
         audioSource.clip = song;
 
         // Start playing the audio
-        audioSource.Play();
+        instrumentalFondo.Play();
+
+
+        StartCoroutine(StartDelaySong());
 
         // Start spawning arrows
         isGameRunning = true;
         spawnRoutine = StartCoroutine(SpawnArrows());
 
-        // Stop the game when the audio is finished
-        StartCoroutine(StopGameWhenAudioEnds());
+       
     }
 
     IEnumerator SpawnArrows()
@@ -65,6 +69,15 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
+    IEnumerator StartDelaySong()
+    {
+        yield return new WaitForSeconds(0.25f);
+        audioSource.Play();
+        // Stop the game when the audio is finished
+        StartCoroutine(StopGameWhenAudioEnds());
+
+    }
+
     IEnumerator StopGameWhenAudioEnds()
     {
         // Wait until the audio finishes
@@ -84,6 +97,7 @@ public class MinigameManager : MonoBehaviour
 
         // Optionally, clean up remaining arrows
         CleanupArrows();
+        instrumentalFondo.Stop();
 
         if (fallos > 7) RestartGame();
         else NextStep();

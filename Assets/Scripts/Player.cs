@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public bool dead => deathAnimation.enabled;
     public bool starpower { get; private set; }
 
+    public RandomAudio RandomAudio;
+   
+
     private void Awake()
     {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -39,11 +42,12 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
+
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
 
-        GameManager.Instance.ResetLevel(3f);
+        StartCoroutine(DeathAudio());
     }
 
     public void Death2()
@@ -51,8 +55,9 @@ public class Player : MonoBehaviour
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
+        StartCoroutine(DeathAudio());
 
-        UIPanelFadeIn.StartCoroutine(UIPanelFadeIn.FadeIn(false));
+        
     }
 
     public void Grow()
@@ -127,6 +132,13 @@ public class Player : MonoBehaviour
 
         activeRenderer.spriteRenderer.color = Color.white;
         starpower = false;
+    }
+
+    IEnumerator DeathAudio()
+    {
+        RandomAudio.PlayRandomAudio();
+        yield return new WaitForSeconds(RandomAudio.gameObject.GetComponent<AudioSource>().clip.length);
+        UIPanelFadeIn.StartCoroutine(UIPanelFadeIn.FadeIn(false));
     }
 
 }

@@ -26,10 +26,8 @@ public class SquareItem : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!clicked)
+        if (nm.prueba1Started && !clicked)
         {
-
-
             nm.audio.clip = clip;
             nm.audio.Play();
             clicked = true;

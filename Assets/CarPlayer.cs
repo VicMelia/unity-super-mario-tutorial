@@ -10,7 +10,7 @@ public class CarPlayer : MonoBehaviour
     public bool hasPearl = false;
 
     public AudioSource enderAudio;
-    public AudioClip enderClip;
+    public AudioClip[] enderClip;
     public AudioClip crashClip;
 
     public CanvasGroup fadePanel;
@@ -18,12 +18,13 @@ public class CarPlayer : MonoBehaviour
 
     public AudioSource music;
     public bool dead = false;
+    public bool win;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        enderAudio.clip = enderClip;
+        
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class CarPlayer : MonoBehaviour
         {
             hasPearl = false;
             Instantiate(enderPearl, new Vector2(transform.position.x, transform.position.y + 0.3f), Quaternion.identity);
+            enderAudio.clip = enderClip[Random.Range(0, enderClip.Length)];
             enderAudio.Play();
 
         }
@@ -64,7 +66,7 @@ public class CarPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!dead && collision.gameObject.CompareTag("Police"))
+        if (!dead && collision.gameObject.CompareTag("Police") && !win)
         {
             dead = true;
             music.Stop();

@@ -3,6 +3,12 @@ using UnityEngine;
 public class Goomba : MonoBehaviour
 {
     public Sprite flatSprite;
+    public SFXManager manager;
+
+    private void Start()
+    {
+        manager = GameObject.Find("SFX").GetComponent<SFXManager>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,6 +42,7 @@ public class Goomba : MonoBehaviour
 
     private void Hit()
     {
+        manager.SetAudio(manager.goomba);
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);

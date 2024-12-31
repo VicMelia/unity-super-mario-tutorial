@@ -72,6 +72,8 @@ public class SquareManager : MonoBehaviour
                 sprite.color = color;
             }
         }
+
+        nm.prueba1Started = true;
     }
 
     public IEnumerator DespawnThings(GameObject[] objects)

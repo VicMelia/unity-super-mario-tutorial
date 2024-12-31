@@ -52,6 +52,12 @@ public class RouletteManager : MonoBehaviour
     private enum GameState { Starting, Betting, EndBetting, Playing, EndPlaying }
     private GameState currentState = GameState.Starting;
 
+    public AudioSource musicaFondo;
+    public AudioSource SFX;
+    public AudioSource SFX2;
+    public AudioClip[] randomAudios;
+    bool musicActived = true;
+
     void Start()
     {
         StartGame();
@@ -141,6 +147,9 @@ public class RouletteManager : MonoBehaviour
 
     void CalculateWinner()
     {
+
+        SFX.Play();
+        
         if(winner == "Black")
         {
             money += roundSumBlack * 2;
@@ -172,12 +181,21 @@ public class RouletteManager : MonoBehaviour
             yield return new WaitForSeconds(startGameAudio.length);
         }
 
+        musicaFondo.Play();
         // Set the game state to Betting
         currentState = GameState.Betting;
         canvasBets.alpha = 1;
         canvasBets.interactable = true;
         timerCanvasGroup.alpha = 1;
         countdownTimer = 10f; // Reset the timer
+    }
+
+    IEnumerator RandomAudio()
+    {
+        yield return new WaitForSeconds(2f);
+        SFX2.clip = randomAudios[Random.Range(0, randomAudios.Length)];
+        SFX2.Play();
+
     }
 
 
@@ -253,6 +271,7 @@ public class RouletteManager : MonoBehaviour
         else if (money <= 0f) Perder();
         else
         {
+            StartCoroutine(RandomAudio());
             EndPlayingPhase();
         }
     
@@ -304,5 +323,20 @@ public class RouletteManager : MonoBehaviour
     void UpdateMoneyDisplay()
     {
         moneyText.text = money.ToString() + " $";
+    }
+
+    public void ChangeMusic()
+    {
+        if (musicActived)
+        {
+            musicActived = false;
+            musicaFondo.volume = 0;
+        }
+
+        else
+        {
+            musicActived = true;
+            musicaFondo.volume = 0.4f;
+        }
     }
 }
